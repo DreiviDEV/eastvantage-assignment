@@ -8,13 +8,21 @@ name: Deploy to Firebase Hosting on merge
       - master
 jobs:
   build_and_deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Run on Ubuntu runner
+
     steps:
-      - uses: actions/checkout@v4
-      - run: npm run build
+      - uses: actions/checkout@v4  # Checkout code from repository
+      - name: Install dependencies
+        run: npm install # Install project dependencies
+        # If Vite is installed globally, you might need to add:
+        # - run: npm install -g vite@latest
+
+      - name: Build the app
+        run: npm run build # Run your build script
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EASTVANTAGE_ASSIGNMENT_40AE9 }}'
-          channelId: live
-          projectId: eastvantage-assignment-40ae9
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NAME }}'
+          projectId: your-project-id # Replace with your project ID
+          siteId: your-site-id # Optional: Set a specific site ID
