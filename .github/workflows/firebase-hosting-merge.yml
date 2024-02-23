@@ -19,10 +19,9 @@ jobs:
 
       - name: Build the app
         run: npm run build # Run your build script
-
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NAME }}'
-          projectId: your-project-id # Replace with your project ID
-          siteId: your-site-id # Optional: Set a specific site ID
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EASTVANTAGE_ASSIGNMENT_40AE9 }}'
+          channelId: live
+          projectId: eastvantage-assignment-40ae9
